@@ -1,0 +1,4 @@
+// app service in azure can also host web apps natively on Linux for supported application stacks and custom Linux containers and supports: Node.js, Java, .Net Core, and Ruby
+//You can retrieve the current list of supported versions on Cloud Shell
+az webapp list-runtimes --os-type linux
+// not supported on Shared pricing tier and you cant mix Windows and Linux in the same plan. It can mix with resource groups though
