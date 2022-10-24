@@ -1,0 +1,5 @@
+// app service uses federated identity, in which a third party identity provider manages the user identities and authentication flow for you
+MICROSOFOT IDENTITY PLATFORM SIGN IN ENDPOINT: /.auth/login/aad
+FACEBOOK SIGN IN ENDPOINT: /.auth/login/facebook
+GOOGLE SIGN IN ENDPOINT: /.auth/login/google
+TWITTER SIGN IN ENDPOINT: /.auth/login/<providerName>
