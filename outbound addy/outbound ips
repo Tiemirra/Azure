@@ -1,0 +1,14 @@
+//If you want to see all the addresses that your app might use in a scale unit, the property possibleOutboundIpAddress that'll list them
+// How to find the outbound IP addresses currently used by your app in the azure portal
+1. click Properties in your app's left hand navigation or by running the following command in the cloud shell. They're listed in the Additional Outbound IP Addresses field
+az webapp show \
+  --resource-group <group_name> \
+  --name <app_name> \
+  --query outboundIpAddresses \
+  --output tsv
+ // to find all possible outbound IP addresses for your app. regardless of pricing tiers, run the following command in the Cloud Shell
+ az webapp show \
+  --resource-group <group_name> \
+  --name <app_name> \
+  --query possibleOutboundIpAddresses \
+  --output tsv
