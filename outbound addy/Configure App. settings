@@ -1,0 +1,27 @@
+// app settings are variables passed as environment variables to the applicatoon code. for linux apps and custom containers, app services passes app settings to the container using the --env flag to set the environment variable in the container
+// app settings can be accessed by navigating to your app's management page and selecting Configuration > Application Settings
+// app settings are always encrypted when stored (encrypted-at-rest)
+
+ADDING AND EDITING SETTINGS
+1. to ass a new app setting, click New application setting 
+2. click the edit button on the right side
+3. when finished click update and save back in the configuration page
+
+EDITING APP. SETTINGS IN BULK
+// to add or edit app settings in bulk, click the Advanced edit button and click update
+// app settings have the following JSON formatiing
+[
+  {
+    "name" "<key-1>",
+    "value": "<value-1>",
+    "slotSetting": false
+    },
+    {
+      "name": "<key-1>",
+      "value": "<value-2>",
+      "slotSetting": false
+     },
+   ...
+ ]
+ 
+ 
