@@ -1,0 +1,16 @@
+// example of connection strings in JSON formatting that you's use for bulk adding or editing
+[
+  {
+    "name": "name-1",
+    "value": "conn-string-1",
+    "type": "SQLServer",
+    "slotSetting": false
+   },
+   {
+      "name": "name-2",
+      "value": "conn-string-2",
+      "type": "PostgreSQL",
+      "slotSetting": false
+     },
+     ...
+  ]
