@@ -1,0 +1,51 @@
+~ Feauture management is a modern software-development practice that decouples feauture release from code deployment and enables quick changes to feauture availability on demand
+- It uses a technique called feauture flags (also known as feauture toggles, feauture switches, and so on) to dynamically administer a feautures lifecycle
+BASIC CONCEPTS: 
+-Feauture Flag: a feauture flag is a variable with a binary state of on or off. The feauture flag also has an associated code block. The state of the feauture flag triggers whether the code block runs or not
+~Feauture manager: a feauture manager is an application package that handles the lifecycle of all the feauture flags in an application. The feauture manager typically provides additional functionality, such as caching feauture flags and updating their states
+~Filter: a filter is a rule for evaluating the state of a feature flag. A user group, a device or browser type, a geo location, and a time window are all ex. of what a filter can represent
+-An effective implementation of feauture management consists of at least 2 components working in concert
+  = an application that makes use of feature flags
+  = a seperate repository that stores the feature flags and their current states
+How these components interact is illustrated in the following examples:
+FEAUTURE FLAG USAGE IN CODE
+- you can think of a feauture flag as a Boolean state variable used with an if conditional statement in your code
+C# : if (featureFlag) {
+    // Run the following code
+}
+    - in this case, if feautureFlag is set to True, the enclosed code block is executed: otherwise it's skipped
+  - You can set the value of feautureflag statically, as in the following code example:
+  C#: bool featureFlag = true;
+- You can also evaluate the flag's state based on certain rules:
+C#: bool featureFlag = isBetaUser();
+~ A slightly more complicated feauture flag pattern includes an else statement as well:
+if (featureFlag) {
+    // This following code will run if the featureFlag value is true
+} else {
+    // This following code will run if the featureFlag value is false
+}
+FEATURE FLAG DECLARATION
+- Each feature flag has 2 parts: a name and a list of one or more filters that are used to evaluate if a feauture's state is on (True) 
+  - A filter defines a use case for when a feature should be turned on 
+  - when a feature flag has multiple filters, the filter list is traversed in order until one of the filters determines the feature should be enabled
+  -The FEATURE MANAGER supports appsettings.json as a configuration source for feauture flags 
+  THE EXAMPLE BELOW SHOWS HOW TO SET UP FEATURE FLAGS IN A JSON FILE:
+  "FeatureManagement": {
+    "FeatureA": true, // Feature flag set to on
+    "FeatureB": false, // Feature flag set to off
+    "FeatureC": {
+        "EnabledFor": [
+            {
+                "Name": "Percentage",
+                "Parameters": {
+                    "Value": 50
+                }
+            }
+        ]
+    }
+}
+FEATURE FLAG REPOSITORY
+- To use feature flags effectively, you need to externalize all the feature flags used in an application
+  -this approach allows you to change feature flag states without modifying and redeploying the application itself
+- Azure App Configuration can be used to define different kinds of feature flags and manipulate their states quickly and confidently
+  - you can use the App Configuration libraries for various programming language frameworks to easily access these feature flags from your application
