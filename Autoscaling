@@ -1,0 +1,15 @@
+- Autoscaling can be triggered according to a schedule, or by assessing whether the system is running short on resources
+  For Example: autoscaling could be triggered if CPU utilization grows, memeory occupancy increases, the # of incoming requests to a service appears to be surging, or some combination of factors
+~ Autoscaling- a cloud system or process that adjusts available resources based on the current demand. It performs in and out as opposed to up and down
+  -Autoscaling in Azure App Service monitors the resource metrics of a web app as it runs. It detects situations where add. resources are required to handle an increasing workload, and ensures those resources are available before the system becomes overloaded
+  - autoscaling responds to changes in the environment by adding or removing web servers and balancing the load between them
+  - it doesn't have any effect on the CPU power, memory, or storage capacity of the web servers powering the app, it only changes the # of web servers
+ AUTOSCALING RULES:
+- autoscaling makes its decisions based on rules that you define
+  - a rule specifies the threshold for a metric, and triggers an autoscale event when this threshold is crossed
+  - it can also deallocate resources when the workload has diminished 
+  Define your autoscaling rules carefully. For example, a Denial of Service attack will likely result in a large-scale influx of incoming traffic. Trying to handle a surge in requests caused by a DoS attack would be fruitless and expensive. These requests aren't genuine, and should be discarded rather than processed. A better solution is to implement detection and filtering of requests that occur during such an attack before they reach your service.
+  WHEN TO C0NSIDER AUTOSCALING?
+  - It's a suitable solution when hosting any application when you can't easily predict the workload in advance, or when the workload is likely to vary by date or time
+    - For Example: when you might expect increased/reduced activity for a business app during holidys
+  
